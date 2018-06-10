@@ -1,0 +1,26 @@
+{
+    "name": "talesoft/tale-color",
+    "type": "library",
+    "keywords": ["color", "compare", "rgb", "rgba", "hsl", "hsla", "hsv", "hsva", "lab", "xyz", "ciede2000"],
+    "description": "A lightweight color manipulation library",
+    "license": "MIT",
+    "homepage": "http://docs.talesoft.codes/php/tale/color",
+    "authors": [
+        {
+            "name": "Torben Köhn",
+            "email": "torben@talesoft.codes"
+        }
+    ],
+    "require": {
+        "php": ">=7.1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Tale\\": "src",
+            "Tale\\Test\\": "tests"
+        }
+    },
+    "require-dev": {
+        "talesoft/tale-dev-tool": "^0.2.2"
+    }
+}

@@ -1,0 +1,22 @@
+#!/usr/bin/env php
+<?php
+
+$fp = fopen('https://raw.githubusercontent.com/codebrainz/color-names/master/output/colors.csv', 'rb');
+
+$constants = '';
+$names = '';
+
+while ($row = fgetcsv($fp)) {
+    [$slug, $name, $hex, $r, $g, $b] = $row;
+
+    if (strlen($hex) === 4) {
+        $hex = '#'.$hex[1].$hex[1].$hex[2].$hex[2].$hex[3].$hex[3];
+    }
+
+    $constants .= '    public const '.strtoupper($slug).' = 0x'.substr($hex, 1).';'."\n";
+    $names .= '        \'' .str_replace('_', '-', $slug).'\' => self::'.strtoupper($slug).','."\n";
+}
+
+fclose($fp);
+
+file_put_contents('generated-colors.txt', "{$constants}\n\n\n{$names}");
